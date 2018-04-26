@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="278.0" y="234.0">com.javarush.task.task36.task3608.model.MainModel</node>
+    <node x="493.9125" y="0.0">com.javarush.task.task36.task3608.model.service.UserService</node>
+    <node x="55.625" y="516.0">com.javarush.task.task36.task3608.view.UsersView</node>
+    <node x="421.0625" y="105.0">com.javarush.task.task36.task3608.model.service.UserServiceImpl</node>
+    <node x="0.0" y="363.0">com.javarush.task.task36.task3608.controller.Controller</node>
+    <node x="23.5" y="246.0">com.javarush.task.task36.task3608.view.EditUserView</node>
+    <node x="115.0625" y="81.0">com.javarush.task.task36.task3608.model.ModelData</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.javarush.task.task36.task3608.model.service.UserServiceImpl" target="com.javarush.task.task36.task3608.model.service.UserService">
+      <point x="0.0" y="-27.5" />
+      <point x="515.5625" y="56.0" />
+      <point x="525.9125" y="56.0" />
+      <point x="-32.0" y="15.5" />
+    </edge>
+    <edge source="com.javarush.task.task36.task3608.model.MainModel" target="com.javarush.task.task36.task3608.model.service.UserService">
+      <point x="92.39999999999996" y="-39.5" />
+      <point x="485.9" y="214.0" />
+      <point x="620.5625" y="214.0" />
+      <point x="620.5625" y="56.0" />
+      <point x="589.9125" y="56.0" />
+      <point x="32.0" y="15.5" />
+    </edge>
+    <edge source="com.javarush.task.task36.task3608.view.EditUserView" target="com.javarush.task.task36.task3608.model.ModelData">
+      <point x="0.0" y="-27.5" />
+      <point x="128.5" y="214.0" />
+      <point x="143.66250000000002" y="214.0" />
+      <point x="-114.39999999999998" y="51.5" />
+    </edge>
+    <edge source="com.javarush.task.task36.task3608.model.MainModel" target="com.javarush.task.task36.task3608.model.ModelData">
+      <point x="-92.39999999999998" y="-39.5" />
+      <point x="301.1" y="204.0" />
+      <point x="258.0625" y="204.0" />
+      <point x="0.0" y="51.5" />
+    </edge>
+    <edge source="com.javarush.task.task36.task3608.model.MainModel" target="com.javarush.task.task36.task3608.model.service.UserServiceImpl">
+      <point x="46.200000000000045" y="-39.5" />
+      <point x="439.70000000000005" y="204.0" />
+      <point x="515.5625" y="204.0" />
+      <point x="0.0" y="27.5" />
+    </edge>
+    <edge source="com.javarush.task.task36.task3608.controller.Controller" target="com.javarush.task.task36.task3608.view.UsersView">
+      <point x="32.125" y="51.5" />
+      <point x="0.0" y="-27.5" />
+    </edge>
+    <edge source="com.javarush.task.task36.task3608.view.UsersView" target="com.javarush.task.task36.task3608.model.ModelData">
+      <point x="84.0" y="-27.5" />
+      <point x="244.625" y="491.0" />
+      <point x="267.5" y="491.0" />
+      <point x="267.5" y="214.0" />
+      <point x="200.86249999999995" y="214.0" />
+      <point x="-57.200000000000045" y="51.5" />
+    </edge>
+    <edge source="com.javarush.task.task36.task3608.controller.Controller" target="com.javarush.task.task36.task3608.view.EditUserView">
+      <point x="-96.375" y="-51.5" />
+      <point x="32.125" y="338.0" />
+      <point x="49.75" y="338.0" />
+      <point x="-78.75" y="27.5" />
+    </edge>
+    <edge source="com.javarush.task.task36.task3608.view.EditUserView" target="com.javarush.task.task36.task3608.controller.Controller">
+      <point x="78.75" y="27.5" />
+      <point x="207.25" y="338.0" />
+      <point x="224.875" y="338.0" />
+      <point x="96.375" y="-51.5" />
+    </edge>
+    <edge source="com.javarush.task.task36.task3608.view.UsersView" target="com.javarush.task.task36.task3608.controller.Controller">
+      <point x="-84.0" y="-27.5" />
+      <point x="76.625" y="491.0" />
+      <point x="32.125" y="491.0" />
+      <point x="-96.375" y="51.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.7000000000000001" x="417.42857142857133" y="422.42857142857133" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

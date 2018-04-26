@@ -1,0 +1,14 @@
+
+\.idea/
+
+exportToHTML/
+
+out/
+
+*.properties
+
+*.iml
+
+*.log
+
+*.png
