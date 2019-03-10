@@ -7,25 +7,37 @@ package com.javarush.task.task18.task1822;
 import java.io.*;
 
 public class Solution {
+
     public static void main(String[] args) {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        FileReader fileReader = null;
+        BufferedReader fileBufReader = null;
         try {
-            String sf = reader.readLine();
-//            FileInputStream f = new FileInputStream(sf);
-            BufferedReader rf = new BufferedReader(new FileReader(sf));
-            String s;
-          String id = args[0];
-            while ((s=rf.readLine()) != null)
-            {
-                if (id.equals(s)) {
-                    System.out.println(s);
-//                    break;
+            fileReader = new FileReader(reader.readLine());
+
+            fileBufReader = new BufferedReader(fileReader);
+
+            int id = Integer.parseInt(args[0]);
+
+            while (fileBufReader.ready()) {
+                String curentLine = fileBufReader.readLine();
+                String curentIdString = curentLine.split(" ")[0];
+                int curentId = Integer.parseInt(curentIdString);
+                if (id == curentId) {
+                    System.out.println(curentLine);
+                    return;
                 }
             }
-            rf.close();
-//            f.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                fileReader.close();
+                fileBufReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 }

@@ -1,8 +1,11 @@
 package com.javarush.task.task22.task2209;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.List;
 
 /*
 Составить цепочку слов
@@ -10,59 +13,86 @@ import java.util.Scanner;
 public class Solution {
     public static void main(String[] args) {
         //...
-//        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-//        String fileName;
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        FileReader fileReader = null;
+        BufferedReader fileBufReader = null;
+        List<String> data = new ArrayList<>();
         try {
-            Scanner sc = new Scanner(System.in);
-            //String file = "file.txt";
-            String file = sc.nextLine();
-            sc.close();
-            sc = new Scanner(new File(file));
-            ArrayList<String> wordslist = new ArrayList<>();
-            while (sc.hasNext()) {
-                wordslist.add(sc.next());
+            fileReader = new FileReader(reader.readLine());
+            fileBufReader = new BufferedReader(fileReader);
+            while (fileBufReader.ready()) {
+                String[] currentArray = fileBufReader.readLine().split(" ");
+                for (String current : currentArray) {
+                    data.add(current);
+                }
             }
-            String[] words = new String[wordslist.size()];
-            StringBuilder result = getLine(wordslist.toArray(words));
-            System.out.println(result.toString());
-//            fileName = reader.readLine();
-//            reader.close();
-////        fileName = "/home/winnie/JavaRush/JavaRushTasks/3.JavaMultithreading/src/com/javarush/task/task22/task2209/1";
-//            String[] getFile = new String[0];
-//            getFile = new BufferedReader(new FileReader(fileName)).readLine().split(" ");
-//            StringBuilder result = getLine(getFile);
-//            System.out.println(result.toString());
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                fileReader.close();
+                fileBufReader.close();
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
+        int size = data.size();
+        String[] dataArray = data.toArray(new String[size]);
 
+        StringBuilder result = getLine(dataArray);
+        System.out.println(result.toString());
     }
 
     public static StringBuilder getLine(String... words) {
-        if (!(words.length > 0) || words == null) return new StringBuilder();
+        StringBuilder result = new StringBuilder();
+        if (words.length == 0) return result;
+        List<String> out = new ArrayList<>();
+        List<String> in = new ArrayList<>();
+        for(int i=1;i<words.length;i++){
+            in.add(words[i]);}
+        out.add(words[0]);
+        out = sort(in,out);
+        for(String current:out){
+            result.append(current).append(" ");
+        }
+        result.setLength(result.length()-1);
+        return result;
+    }
 
-        StringBuilder result = new StringBuilder(words[0]);
-        char first = Character.toLowerCase(result.charAt(0));
-        char last = Character.toUpperCase(result.charAt(result.length() - 1));
-        boolean flag = true;
-        while (flag) {
-            flag = false;
-            for (int i = 1; i < words.length; i++) {
-                if (words[i] != null && last == words[i].charAt(0)) {
-                    flag = true;
-                    result.append(" ").append(words[i]);
-                    last = Character.toUpperCase(result.charAt(result.length() - 1));
-                    words[i] = null;
-                } else {
-                    if (words[i] != null && first == words[i].charAt(words[i].length() - 1)) {
-                        flag = true;
-                        result.insert(0, words[i] + " ");
-                        first = Character.toUpperCase(words[i].charAt(words[i].length() - 1));
-                        words[i] = null;
-                    }
+    private static List<String> sort(List<String> in, List<String> out) {
+        int check = in.size();
+        for (int i=0;i<in.size();i++){
+            char startOut = getStart(out.get(0));
+            char endOut = getEnd(out.get(out.size()-1));
+            char startIn = getStart(in.get(i));
+            char endIn = getEnd(in.get(i));
+            if (endOut==startIn||Character.toUpperCase(endOut)==startIn||endOut==Character.toUpperCase(startIn)){
+                out.add(in.get(i));
+                in.remove(i);
+                i--;
+            } else {
+                if (startOut==endIn||Character.toUpperCase(startOut)==endIn||startOut==Character.toUpperCase(endIn)){
+                    out.add(0,in.get(i));
+                    in.remove(i);
+                    i--;
                 }
             }
         }
-        return result;
+        if (in.isEmpty()||check==in.size()){
+            return out;
+        }
+        out = sort(in,out);
+        return out;
     }
+
+    private static char getEnd(String s) {
+        int end =s.length();
+        return s.charAt(end-1);
+    }
+
+    private static char getStart(String s) {
+        return s.charAt(0);
+    }
+
 }
